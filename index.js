@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 
 // Index route
 app.get('/', function (req, res) {
-    res.send('1195379480')
+    res.send('salut je suis le kapkacu_bot')
 })
 
 app.get('/webhook/', function (req, res) {
@@ -37,9 +37,12 @@ app.post('/webhook/', function (req, res) {
     for (i = 0; i < messaging_events.length; i++) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
+
         if (event.message && event.message.text) {
             text = event.message.text
-            if (text === 'salut') {
+
+
+            if (nbre_caracteres(";",texte)>0) {
                 sendGenericMessage(sender)
                 continue
             }
@@ -91,19 +94,15 @@ function sendGenericMessage(sender) {
                 "elements": [{
                     "title": "Bienvenue sur le bot kapkacu",
                     "subtitle": "kapkacu paiement",
-                    "image_url": "https://raw.githubusercontent.com/mlaidouni/FacebookBot/master/chatbot-facebook.jpg",
+                    "image_url": "http://kapkacu.com/img/logo.JPG",
                     "buttons": [{
                         "type": "web_url",
-                        "url": "https://www.facebook.com/groups/1795624087378868/",
-                        "title": "FB Facebook Group"
+                        "url": "https://www.kapkacu.com",
+                        "title": "Cree vous un compte kapkacu"
                     }, {
                         "type": "web_url",
-                        "url": "https://www.youtube.com/channel/UCRV86HkxxSGI-whauOMkQdw",
-                        "title": "Me Suivre sur Youtube"
-                    },{
-                        "type": "web_url",
-                        "url": "https://twitter.com/elmehdimobi",
-                        "title": "Me Suivre sur Twitter"
+                        "url": "https://web.facebook.com/kapkacu/",
+                        "title": "Suivez moi sur FB"
                     }],
                 }, ]  
             } 
