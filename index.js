@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 
 // Index route
 app.get('/', function (req, res) {
-    res.send('Bonjour, Je suis votre Facebook Messenger Bot')
+    res.send('1195379480')
 })
 
 app.get('/webhook/', function (req, res) {
