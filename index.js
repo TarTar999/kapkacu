@@ -79,10 +79,25 @@ function sendTextMessage(sender, text) {
     })
 }
 
+function teste() {
+    request({
+        url: 'https://www.admin.ifcad.net/serveur/matiere.php?action=out',
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        console.log(response)
+    })
+}
+
 
 // Two cards.
 
 function sendGenericMessage(sender) {
+
+    teste()
     messageData = {
         "attachment": {
             "type": "template",
@@ -105,23 +120,6 @@ function sendGenericMessage(sender) {
             } 
         }
     }
-    request({
-        url: 'https://www.admin.ifcad.net/serveur/matiere.php?action=out',
-        method: 'GET',
-        json: {
-            recipient: {id:sender},
-            message: messageData,
-        }
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-
-        else{console.log(response)}
-    })
-
 
      request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
