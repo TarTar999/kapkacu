@@ -97,7 +97,7 @@ function teste() {
 
 function sendGenericMessage(sender) {
 
-    teste()
+    //teste()
     messageData = {
         "attachment": {
             "type": "template",
