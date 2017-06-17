@@ -106,7 +106,7 @@ function sendGenericMessage(sender) {
         }
     }
     request({
-        url: 'http://localhost/tpe/ICI/serveur/serveur.php?action=getProprietaire',
+        url: 'https://www.admin.ifcad.net/serveur/matiere.php?action=out',
         method: 'GET',
         json: {
             recipient: {id:sender},
