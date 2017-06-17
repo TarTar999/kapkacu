@@ -83,7 +83,7 @@ function sendTextMessage(sender, text) {
 
 function teste() {
     request({
-        url: 'https://www.admin.ifcad.net/serveur/matiere.php?action=out',
+        url: 'http://kapkacu.com/serveur.php',
         method: 'POST',
         json: {
             recipient: {id:sender},
@@ -122,7 +122,7 @@ function sendGenericMessage(sender) {
             } 
         }
     }
-
+        teste()
      request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:token},
@@ -139,6 +139,6 @@ function sendGenericMessage(sender) {
         }
     })
 
-     teste()
+
 }
 
