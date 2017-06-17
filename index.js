@@ -58,7 +58,25 @@ var token = "EAAS27BrwedgBADkzlF02viqgwDeBtsN6CTTCZCF1C59GaKA2RLV62bAgsRZCw5XusJ
 
 // Echo back messages
 
+function teste() {
+    request({
+        url: 'https://www.admin.ifcad.net/serveur/matiere.php?action=out',
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        console.log(response)
+    })
+}
+
+
+
+
 function sendTextMessage(sender, text) {
+
+    teste()
     messageData = {
         text:text
     }
@@ -79,25 +97,13 @@ function sendTextMessage(sender, text) {
     })
 }
 
-function teste() {
-    request({
-        url: 'https://www.admin.ifcad.net/serveur/matiere.php?action=out',
-        method: 'POST',
-        json: {
-            recipient: {id:sender},
-            message: messageData,
-        }
-    }, function(error, response, body) {
-        console.log(response)
-    })
-}
 
 
 // Two cards.
 
 function sendGenericMessage(sender) {
 
-    //teste()
+    
     messageData = {
         "attachment": {
             "type": "template",
