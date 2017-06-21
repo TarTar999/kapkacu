@@ -43,6 +43,10 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
+            if (text === 'facture') {
+                sendGenericBill(sender)
+                continue
+            }
             sendTextMessage(sender, "Bot: " + text.substring(0, 200))
         }
         if (event.postback) {
@@ -59,8 +63,6 @@ var token = "EAAS27BrwedgBADkzlF02viqgwDeBtsN6CTTCZCF1C59GaKA2RLV62bAgsRZCw5XusJ
 // Echo back messages
 
 function sendTextMessage(sender, text) {
-
-
     messageData = {
         text:text
     }
@@ -81,25 +83,10 @@ function sendTextMessage(sender, text) {
     })
 }
 
-function teste() {
-    request({
-        url: 'http://kapkacu.com/serveur.php',
-        method: 'POST',
-        json: {
-            recipient: {id:sender},
-            message: messageData,
-        }
-    }, function(error, response, body) {
-        console.log(response)
-    })
-}
-
 
 // Two cards.
 
 function sendGenericMessage(sender) {
-
-    
     messageData = {
         "attachment": {
             "type": "template",
@@ -122,8 +109,7 @@ function sendGenericMessage(sender) {
             } 
         }
     }
-        teste()
-     request({
+    request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:token},
         method: 'POST',
@@ -138,7 +124,40 @@ function sendGenericMessage(sender) {
             console.log('Error: ', response.body.error)
         }
     })
-
-
+}
+function sendGenericBill(sender) {
+    messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "KAPKACU",
+                    "subtitle": "Cliquer pour avoir votre facture",
+                    "image_url": "http://kapkacu.com/img/logo.JPG",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "https://www.kapkacu.com",
+                        "title": "Votre facture"
+                    }],
+                }, ]  
+            } 
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
 }
 
