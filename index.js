@@ -134,7 +134,7 @@ function sendGenericBill(sender) {
                 "elements": [{
                     "title": "KAPKACU",
                     "subtitle": "Cliquer pour avoir votre facture",
-                    "image_url": "http://kapkacu.com/img/logo.JPG",
+                    "image_url": "http://kapkacu.com/logo_kapkacu.png",
                     "buttons": [{
                         "type": "web_url",
                         "url": "https://www.kapkacu.com",
