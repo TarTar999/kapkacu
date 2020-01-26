@@ -6,7 +6,7 @@ server.listen(80);
 // WARNING: app.listen(80) will NOT work here!
 
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
+  res.send('Retoun OK');
 });
 
 io.on('connection', function (socket) {
