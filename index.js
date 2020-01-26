@@ -1,19 +1,10 @@
-// El Mehdi LAIDOUNI
-
 var express = require('express')
-var bodyParser = require('body-parser')
 var app = express()
 var server = require('http').Server(app)
 var io = require('socket.io')(server)
 
 var PORT = app.get('port')
-
 app.set('port', (process.env.PORT || 5000))
-// Process urlencoded
-app.use(bodyParser.urlencoded({extended: false}))
-
-// Process json
-app.use(bodyParser.json())
 
 // Index route
 app.get('/', function (req, res) {
