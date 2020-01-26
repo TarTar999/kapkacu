@@ -1,17 +1,19 @@
 {
-  "name": "kapkacu",
+  "name": "websockets-socket.io",
   "version": "1.0.0",
-  "description": "Le kapkacu bot pour le paiement en ligne avec les services MTN et orange money",
+  "engines": {
+    "node": "12.x"
+  },
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "author": "KetUp",
-  "license": "MIT",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3",
-    "request": "^2.81.0",
-    "socket.io": "^2.0.3"
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
   }
 }
